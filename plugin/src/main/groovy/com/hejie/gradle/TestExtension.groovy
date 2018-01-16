@@ -1,6 +1,6 @@
 package com.hejie.gradle;
 
-class GreetingExtension {
+class TestExtension {
     Boolean enable = true
     String text = ''
 }

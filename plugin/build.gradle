@@ -12,7 +12,7 @@ dependencies {
     compile gradleApi() // GradleAPI支持
 }
 task apiJar(type: Jar) {
-    baseName "publishing-api"
+    baseName "plugin"
     from sourceSets.main.output
     exclude '**/impl/**'
 }
@@ -20,8 +20,8 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
 
-            groupId 'com.app.plugin'
-            artifactId 'app'
+            groupId 'com.hejie.gradle'
+            artifactId 'plugin'
             version '1.0.0'
             artifact apiJar
         }
