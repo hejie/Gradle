@@ -6,14 +6,14 @@ class Main {
         println "我根本不会吃，不要喂我${food}"
     }
     def cc = {
-        name = "hanmeimei"
+        name = "HELLO"
         age = 26
         eat("油条")
     }
 
     static void main(String... args) {
         Main main = new Main()
-        Person person = new Person(name: "lilei", age: 14)
+        Person person = new Person(name: "HELLO", age: 14)
         println person.toString()
 
         main.cc.delegate = person
@@ -41,6 +41,7 @@ class Main {
         android.delegate = bean
         android.call()
         println bean.toString()
+
 
     }
 }

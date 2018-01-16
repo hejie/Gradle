@@ -18,6 +18,11 @@ hello {
 
 // 独立工程开发插件示例
 buildscript {
+
+    repositories.each {
+        println "--------"+it.getUrl()
+    }
+
     dependencies {
         classpath files('plugin.jar')
     }
