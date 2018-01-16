@@ -18,8 +18,20 @@ hello {
 
 // 独立工程开发插件示例
 buildscript {
-
-    repositories.each {
-        println "--------"+it.getUrl()
+    repositories {
+        mavenLocal()//本地maven
     }
+    dependencies {
+        classpath "com.hejie.gradle:plugin:1.0.0"
+    }
+    repositories.each {
+        println "--------" + it.getUrl()
+    }
+}
+gradle.afterProject { project ->
+    println('Project ' + project + '  has evaluated')
+}
+//项目评估完
+afterEvaluate {
+    println("-------afterEvaluate-------")
 }
