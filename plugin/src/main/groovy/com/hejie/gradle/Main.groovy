@@ -1,4 +1,4 @@
-package com.hejie.gradle;
+package com.hejie.gradle
 
 
 class Main {

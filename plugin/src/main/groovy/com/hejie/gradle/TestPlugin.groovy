@@ -13,7 +13,7 @@ class TestPlugin implements Plugin<Project> {
         project.extensions.create('testTask', TestExtension)
         project.task('testTask') {
             doLast {
-                TestExtension ext = project.extensions.greet;
+                TestExtension ext = project.extensions.testTask
                 println ext.enable ? "Hello ${ext.text}!" : 'TestPlugin is disabled.'
             }
         }
