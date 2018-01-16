@@ -1,0 +1,64 @@
+class Person {
+    String name
+    int age
+
+    void eat(String food) {
+        println("你喂的${food}真难吃")
+    }
+
+    @Override
+    String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}'
+    }
+}
+
+class Main {
+
+    void eat(String food) {
+        println("你喂的${food}真好吃")
+    }
+
+    def cc = {
+        name = "hanmeimei"
+        age = 26
+        eat("油条")
+    }
+
+}
+
+def android = {
+    name = "hanmeimei"
+    age = 26
+}
+
+/*
+* Closure.OWNER_FIRST是默认策略。优先在owner寻找，owner没有再delegate
+
+Closure.DELEGATE_FIRST：优先在delegate寻找，delegate没有再owner
+
+Closure.OWNER_ONLY：只在owner中寻找
+
+Closure.DELEGATE_ONLY：只在delegate中寻找
+
+Closure.TO_SELF：暂时没有用到
+*/
+
+task test() {
+//    fun a
+/*    Main main = new Main()
+    Person person = new Person(name: "lilei", age: 14)
+    println person
+    main.cc.delegate = person
+    main.cc.setResolveStrategy(Closure.DELEGATE_FIRST)
+    main.cc()
+    println person*/
+
+    Person person = new Person(name: "lilei", age: 14)
+    android.delegate = person
+    android()
+    println(person.toString())
+
+}

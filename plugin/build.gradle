@@ -1,0 +1,42 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile localGroovy() // Groovy支持(本地)
+    compile gradleApi() // GradleAPI支持
+}
+task apiJar(type: Jar) {
+    baseName "publishing-api"
+    from sourceSets.main.output
+    exclude '**/impl/**'
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            groupId 'com.app.plugin'
+            artifactId 'app'
+            version '1.0.0'
+            artifact apiJar
+        }
+    }
+}
+
+publishing {
+    repositories {
+            //提交到远程服务器：
+            // repository(url: "http://www.xxx.com/repos") {
+            //    authentication(userName: "admin", password: "admin")
+            // }
+            //本地的Maven地址设置为D:/repos
+//            repository(url: uri(''))
+            mavenLocal()
+
+    }
+}

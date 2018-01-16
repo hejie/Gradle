@@ -1,0 +1,31 @@
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://maven.google.com" }
+        mavenCentral()
+    }
+}
+
+// 简单插件示例
+apply from: 'hello_plugin.gradle'
+// 简单插件示例
+apply from: 'Test.gradle'
+
+hello {
+    enable = true
+    text = 'Gradle'
+}
+
+// 独立工程开发插件示例
+buildscript {
+    dependencies {
+        classpath files('plugin.jar')
+    }
+}
+
+apply plugin: 'greeting'
+
+greet {
+    enable = true
+    text = 'Plugin'
+}
