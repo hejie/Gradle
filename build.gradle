@@ -28,10 +28,29 @@ buildscript {
         println "--------" + it.getUrl()
     }
 }
-gradle.afterProject { project ->
-    println('Project ' + project + '  has evaluated')
+apply plugin: 'com.hejie.gradle'
+
+testTask {
+    enable = true
+    text = 'Gradle'
 }
+//gradle解析完所有的task之后,并且在具体task开始执行之前
+project.afterEvaluate {
+    println('Project4 ' + owner + '  has evaluated')
+}
+
+//gradle评估完
+gradle.afterProject { project ->
+    println('Project1 ' + project + '  has evaluated')
+}
+
 //项目评估完
-afterEvaluate {
-    println("-------afterEvaluate-------")
+rootProject.afterEvaluate {
+    println('Project2 ' + owner + '  has evaluated')
+}
+
+tasks.getByName("testTask") {
+    it.doLast {
+        println "assemble testTask done."
+    }
 }

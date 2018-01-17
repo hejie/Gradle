@@ -56,9 +56,9 @@ task test() {
     main.cc()
     println person*/
 
-    Person person = new Person(name: "lilei", age: 14)
+   /* Person person = new Person(name: "lilei", age: 14)
     android.delegate = person
     android()
-    println(person.toString())
+    println(person.toString())*/
 
 }

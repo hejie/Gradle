@@ -1,7 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
-apply plugin: 'com.hejie.gradle'
 
 repositories {
     mavenCentral()
@@ -30,18 +29,21 @@ publishing {
 
 publishing {
     repositories {
-        //提交到远程服务器：
-        // repository(url: "http://www.xxx.com/repos") {
-        //    authentication(userName: "admin", password: "admin")
-        // }
-        //本地的Maven地址设置为D:/repos
+            //提交到远程服务器：
+            // repository(url: "http://www.xxx.com/repos") {
+            //    authentication(userName: "admin", password: "admin")
+            // }
+            //本地的Maven地址设置为D:/repos
 //            repository(url: uri(''))
-        mavenLocal()
+            mavenLocal()
 
     }
 }
-
+//项目评估完
+project.afterEvaluate {
+    println('Project3 ' + owner + '  has evaluated')
+}
 //whenTaskAdded后面的闭包会在gradle配置阶段完成
 tasks.whenTaskAdded {
-    println("-------whenTaskAdded-------" + name)
+    println('task name ' + name + '  whenTaskAdded')
 }

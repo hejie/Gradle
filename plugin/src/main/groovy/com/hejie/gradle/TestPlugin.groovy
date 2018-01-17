@@ -17,5 +17,10 @@ class TestPlugin implements Plugin<Project> {
                 println ext.enable ? "Hello ${ext.text}!" : 'TestPlugin is disabled.'
             }
         }
+        project.afterEvaluate {
+            TestExtension ext= project.getExtensions().findByType(TestExtension.class)
+            println ext.enable ? "------afterEvaluate-------- ${ext.text}!" : 'TestPlugin is disabled.'
+        }
+
     }
 }
