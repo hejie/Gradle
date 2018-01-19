@@ -30,10 +30,11 @@ buildscript {
 }
 apply plugin: 'com.hejie.gradle'
 
-testTask {
-    enable = true
-    text = 'Gradle'
+testTask{
+    enable=true
+    text="hejie"
 }
+
 //gradle解析完所有的task之后,并且在具体task开始执行之前
 project.afterEvaluate {
     println('Project4 ' + owner + '  has evaluated')
@@ -47,10 +48,4 @@ gradle.afterProject { project ->
 //项目评估完
 rootProject.afterEvaluate {
     println('Project2 ' + owner + '  has evaluated')
-}
-
-tasks.getByName("testTask") {
-    it.doLast {
-        println "assemble testTask done."
-    }
 }
